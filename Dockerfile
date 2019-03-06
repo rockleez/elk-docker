@@ -5,7 +5,7 @@
 # docker build -t <repo-user>/elk .
 
 # Run with:
-# docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk <repo-user>/elk
+# docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -p 8988:8988 -it --name elk <repo-user>/elk
 
 FROM phusion/baseimage
 MAINTAINER Sebastien Pujadas http://pujadas.net
@@ -139,6 +139,7 @@ ADD ./02-beats-input.conf ${LOGSTASH_PATH_CONF}/conf.d/02-beats-input.conf
 ADD ./10-syslog.conf ${LOGSTASH_PATH_CONF}/conf.d/10-syslog.conf
 ADD ./11-nginx.conf ${LOGSTASH_PATH_CONF}/conf.d/11-nginx.conf
 ADD ./30-output.conf ${LOGSTASH_PATH_CONF}/conf.d/30-output.conf
+ADD ./40-tcp-input.conf ${LOGSTASH_PATH_CONF}/conf.d/40-tcp-input.conf
 
 # patterns
 ADD ./nginx.pattern ${LOGSTASH_HOME}/patterns/nginx
